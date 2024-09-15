@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Expiry Tracker</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Use it or Lose it</h1>
+        <form id="product_form" enctype="multipart/form-data">
+            <label for="product_name">Product name:</label>
+            <input type="text" id="product_name" name="product_name" required>
+
+            <label for="date">Purchase date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="file">Attach a file (optional):</label>
+            <input type="file" id="file" name="file">
+
+            <button type="submit" id="submit_button">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('product_form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting the traditional way
+
+            const formData = new FormData();
+            formData.append('product_name', document.getElementById('product_name').value);
+            formData.append('date', document.getElementById('date').value);
+            const fileInput = document.getElementById('file');
+            if (fileInput.files.length > 0) {
+                formData.append('file', fileInput.files[0]);
+            }
+
+            fetch('http://127.0.0.1:5000/process_input', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    document.getElementById('result').innerHTML = `<p>${data.message}</p>`;
+                } else {
+                    document.getElementById('result').innerHTML = '<p>No data returned from server.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `<p>There was an error processing your request: ${error.message}</p>`;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background: url('bg.pic.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f5f2; /* Soft sage green as fallback if image doesn't load */
+  }
+  
+  /* Container Styling */
+  .container {
+    background-color: rgba(240, 245, 242, 0.9); /* Light sage green background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #4a6351; /* Deep sage green */
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  /* Form Styling */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 1.1rem;
+    color: #6d7f75; /* Muted green for labels */
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  input[type="text"], input[type="date"], input[type="file"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    border: 1px solid #bfc9c3; /* Light green-grey border */
+    border-radius: 5px;
+    width: 100%;
+    background-color: #f0f5f2; /* Light sage background inside inputs */
+  }
+  
+  input[type="text"]:focus, input[type="date"]:focus, input[type="file"]:focus {
+    outline: none;
+    border-color: #88a096; /* Darker sage border on focus */
+  }
+  
+  button {
+    padding: 12px;
+    background-color: #88a096; /* Sage green button */
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #6d7f75; /* Darker sage green on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+    }
+  
+    h1 {
+      font-size: 1.8rem;
+    }
+  
+    input[type="text"], input[type="date"], input[type="file"] {
+      font-size: 0.9rem;
+    }
+  
+    button {
+      font-size: 1rem;
+    }
+  }
+  
